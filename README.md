@@ -8,8 +8,7 @@
 - [x] Create a review aggregator microservice 
    * Express API to provide API for getting posted reviews on ```/reviews```
    * Use Kafka Streams API to aggregate data using given guidelines and push to new topic for web UI
-
-- [ ] Write tests for APIs using Mocha
+- [ ] Write tests for APIs using Mocha and Chai
 - [ ] Create a review storage microservice to deal with storage of data to MongoDB, a cloud cluster used in this case (MongoDB Atlas)
 - [ ] Have a reactjs UI serving as a Kafka consumer to visualise output in realtime
 - [ ] Final intention was to employ the use of containers (docker) 
