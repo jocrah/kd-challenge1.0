@@ -58,6 +58,11 @@ app.get('/reviews', (req, res) => {
         return JSON.parse(message.value.toString());
     };
 
+    // 50 product reviews and 20 site reviews.  
+    // 20 of these product reviews are coming from amazon, 
+    // 30 of them came directly from the widget(A kudobuzz review) 
+    // and the 20 site reviews came from facebook.
+
     stream.from("kb-new-review-topic")
           .map(data)
           .filter(dt => dt.type=="product")
@@ -74,12 +79,6 @@ app.get('/reviews', (req, res) => {
         console.log("streamed failed to start: " + error);
     });    
 
-    // 50 product reviews and 20 site reviews.  
-    // 20 of these product reviews are coming from amazon, 
-    // 30 of them came directly from the widget(A kudobuzz review) 
-    // and the 20 site reviews came from facebook.
-
-    // stream.filter
 
     //post to another topic which will be listened to 
 
