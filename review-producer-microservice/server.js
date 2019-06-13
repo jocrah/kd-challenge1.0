@@ -14,11 +14,11 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
+//validate request
+let reviewMiddleware = require('./review-middleware');
+app.use(reviewMiddleware({}));
+
 app.post('/review', (req, res) => {
-    // validation next - middleware
-    // generate mock data
-    console.log("Params : ");
-    console.log(req.body);
     const Producer = kafka.Producer;
     const client = new kafka.KafkaClient();
     let producer = new Producer(client);
@@ -32,11 +32,12 @@ app.post('/review', (req, res) => {
         });
     });
 
-    producer.on('error', function(err){})
+    producer.on('error', function(err){
+        console.log("not sent");
+    });
 
     res.send("OK");
 });
-
 
 app.listen(PORT, HOST);
 console.log(`Running on http://${HOST}:${PORT}`);
