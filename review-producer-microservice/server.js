@@ -23,7 +23,7 @@ app.post('/review', (req, res) => {
     const client = new kafka.KafkaClient();
     let producer = new Producer(client);
     let payloads = [
-        {topic: 'kb-new-review-topic', messages: 'Hi'}
+        {topic: 'kb-new-review-topic', messages: JSON.stringify(req.body)}
     ];
 
     producer.on('ready', function() {
